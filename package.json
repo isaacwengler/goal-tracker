@@ -4,7 +4,7 @@
   "description": "This project is a full stack todo web application made with Django and React to track goals, with user authentication.",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development ./goalTracker/frontend/src/index.js --output-path ./goalTracker/frontend/static/frontend",
+    "dev": "webpack --mode development --watch ./goalTracker/frontend/src/index.js --output-path ./goalTracker/frontend/static/frontend",
     "build": "webpack --mode production ./goalTracker/frontend/src/index.js --output-path ./goalTracker/frontend/static/frontend"
   },
   "repository": {
