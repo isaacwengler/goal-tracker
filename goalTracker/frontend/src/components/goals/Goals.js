@@ -1,13 +1,46 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { getGoals } from '../../actions/goals';
 
 export class Goals extends Component {
+    static propTypes = {
+        goals: PropTypes.array.isRequired
+    };
+
+    componentDidMount() {
+        this.props.getGoals();
+    }
+
     render() {
         return (
-            <div>
-                <h1>Goals List</h1>
-            </div>
+            <Fragment>
+                <h2>Goals</h2>
+                <table className='table table-striped'>
+                    <thead>
+                        <tr>
+                            <th />
+                            <th>Goal</th>
+                            <th />
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.props.goals.map(map => (
+                            <tr key={goal.id}>
+                                <td><button className="btn btn-danger btn-sm">Check</button></td>
+                                <td>{goal.title}</td>
+                                <td><button className="btn btn-danger btn-sm">Delete</button></td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </Fragment>
         )
     }
 }
 
-export default Goals
+const mapStateToProps = state => ({
+    goals: state.goals.goals
+})
+
+export default connect(mapStateToProps, { getGoals })(Goals);
