@@ -21,7 +21,6 @@ export class Goals extends Component {
                 <table className='table table-striped'>
                     <thead>
                         <tr>
-
                         </tr>
                     </thead>
                     <tbody>
