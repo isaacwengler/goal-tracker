@@ -1,11 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getGoals } from '../../actions/goals';
+import { getGoals, deleteGoal } from '../../actions/goals';
 
 export class Goals extends Component {
     static propTypes = {
-        goals: PropTypes.array.isRequired
+        goals: PropTypes.array.isRequired,
+        getGoals: PropTypes.func.isRequired,
+        deleteGoal: PropTypes.func.isRequired,
     };
 
     componentDidMount() {
@@ -29,7 +31,7 @@ export class Goals extends Component {
                             <tr key={goal.id}>
                                 <td><button className="btn btn-danger btn-sm">Check</button></td>
                                 <td>{goal.title}</td>
-                                <td><button className="btn btn-danger btn-sm">Delete</button></td>
+                                <td><button onClick={this.props.deleteGoal.bind(this, goal.id)} className="btn btn-danger btn-sm">Delete</button></td>
                             </tr>
                         ))}
                     </tbody>
@@ -43,4 +45,4 @@ const mapStateToProps = state => ({
     goals: state.goals.goals
 })
 
-export default connect(mapStateToProps, { getGoals })(Goals);
+export default connect(mapStateToProps, { getGoals, deleteGoal })(Goals);
