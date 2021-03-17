@@ -21,17 +21,15 @@ export class Goals extends Component {
                 <table className='table table-striped'>
                     <thead>
                         <tr>
-                            <th />
-                            <th>Goal</th>
-                            <th />
+
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.goals.map(map => (
+                        {this.props.goals.map((goal) => (
                             <tr key={goal.id}>
                                 <td><button className="btn btn-danger btn-sm">Check</button></td>
-                                <td>{goal.title}</td>
-                                <td><button onClick={this.props.deleteGoal.bind(this, goal.id)} className="btn btn-danger btn-sm">Delete</button></td>
+                                <td>{goal.name}</td>
+                                <td><button onClick={this.props.deleteGoal.bind(this, goal.id)} className="btn btn-danger btn-sm">{' '}Delete</button></td>
                             </tr>
                         ))}
                     </tbody>

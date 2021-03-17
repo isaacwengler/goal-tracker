@@ -1,16 +1,26 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { addGoal } from '../../actions/goals'
 
 export class Form extends Component {
     state = {
         name: '',
-    }
+    };
 
-    onChange = e => this.setState({ [e.target.name]: e.target.value });
+    static propTypes = {
+        addGoal: PropTypes.func.isRequired
+    };
 
-    onSubmit = e => {
+    onChange = (e) => this.setState({ [e.target.name]: e.target.value });
+
+    onSubmit = (e) => {
         e.preventDefault();
-        console.log("submit");
-    }
+        const { name } = this.state;
+        const goal = { name };
+        this.props.addGoal(goal);
+        this.setState({ name: '' })
+    };
 
     render() {
         const { name } = this.state;
@@ -40,4 +50,4 @@ export class Form extends Component {
     }
 }
 
-export default Form
+export default connect(null, { addGoal })(Form);
