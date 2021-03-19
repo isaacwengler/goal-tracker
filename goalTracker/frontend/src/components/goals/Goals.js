@@ -1,13 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getGoals, deleteGoal } from '../../actions/goals';
+import { getGoals, deleteGoal, completeGoal } from '../../actions/goals';
 
 export class Goals extends Component {
     static propTypes = {
         goals: PropTypes.array.isRequired,
         getGoals: PropTypes.func.isRequired,
         deleteGoal: PropTypes.func.isRequired,
+        completeGoal: PropTypes.func.isRequired,
     };
 
     componentDidMount() {
@@ -26,7 +27,9 @@ export class Goals extends Component {
                     <tbody>
                         {this.props.goals.map((goal) => (
                             <tr key={goal.id}>
-                                <td><button className="btn btn-danger btn-sm">Check</button></td>
+                                <td><div>
+                                    <input className="form-check-input" type="checkbox" id="flexCheckChecked" checked={goal.complete} onChange={this.props.completeGoal.bind(this, goal.id, goal.name, !goal.complete)} />
+                                </div></td>
                                 <td>{goal.name}</td>
                                 <td><button onClick={this.props.deleteGoal.bind(this, goal.id)} className="btn btn-danger btn-sm">{' '}Delete</button></td>
                             </tr>
@@ -42,4 +45,4 @@ const mapStateToProps = state => ({
     goals: state.goals.goals
 })
 
-export default connect(mapStateToProps, { getGoals, deleteGoal })(Goals);
+export default connect(mapStateToProps, { getGoals, deleteGoal, completeGoal })(Goals);

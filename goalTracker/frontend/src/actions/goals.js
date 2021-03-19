@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_GOALS, DELETE_GOAL, ADD_GOAL } from './types';
+import { GET_GOALS, DELETE_GOAL, ADD_GOAL, COMPLETE_GOAL } from './types';
 
 // GET GOALS 
 export const getGoals = () => dispatch => {
@@ -33,6 +33,23 @@ export const addGoal = (goal) => dispatch => {
             dispatch({
                 type: ADD_GOAL,
                 payload: res.data
+            });
+        }).catch(err => console.log(err));
+}
+
+// COMPLETE GOAL
+
+export const completeGoal = (id, goal, status) => dispatch => {
+    const modify = {
+        id: id,
+        name: goal,
+        complete: status
+    }
+    axios.put(`/api/goals/${id}/`, modify)
+        .then(res => {
+            dispatch({
+                type: COMPLETE_GOAL,
+                payload: modify
             });
         }).catch(err => console.log(err));
 }

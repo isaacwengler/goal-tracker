@@ -1,4 +1,4 @@
-import { GET_GOALS, DELETE_GOAL, ADD_GOAL } from '../actions/types.js';
+import { GET_GOALS, DELETE_GOAL, ADD_GOAL, COMPLETE_GOAL } from '../actions/types.js';
 
 const initialState = {
     goals: []
@@ -20,6 +20,12 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 goals: [...state.goals, action.payload]
+            }
+        case COMPLETE_GOAL:
+            console.log(action.payload)
+            return {
+                ...state,
+                goals: state.goals.map(goal => (goal.id === action.payload.id) ? action.payload : goal),
             }
         default:
             return state;
