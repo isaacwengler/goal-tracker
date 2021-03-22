@@ -27,11 +27,15 @@ export class Goals extends Component {
                     <tbody>
                         {this.props.goals.map((goal) => (
                             <tr key={goal.id}>
+                                <td></td>
                                 <td><div>
                                     <input className="form-check-input" type="checkbox" id="flexCheckChecked" checked={goal.complete} onChange={this.props.completeGoal.bind(this, goal.id, goal.name, !goal.complete)} />
                                 </div></td>
                                 <td>{goal.name}</td>
-                                <td><button onClick={this.props.deleteGoal.bind(this, goal.id)} className="btn btn-danger btn-sm">{' '}Delete</button></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button onClick={this.props.deleteGoal.bind(this, goal.id)} className="btn btn-warning btn-sm">{' '}Delete</button></td>
                             </tr>
                         ))}
                     </tbody>

@@ -28,24 +28,33 @@ export class Form extends Component {
             <div className="card card-body mt-4 mb-4">
                 <h2>Make New Goal</h2>
                 <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <td>
+                                    <div className="form-group">
 
-                        <input
-                            className="form-control"
-                            type="text"
-                            name="name"
-                            onChange={this.onChange}
-                            value={name}
-                        />
-                    </div>
-                    <br></br>
-                    <div className="form-group">
-                        <button type="submit" className="btn btn-primary">
-                            Add Goal!
-                        </button>
-                    </div>
+                                        <input
+                                            className="form-control"
+                                            type="text"
+                                            name="name"
+                                            onChange={this.onChange}
+                                            value={name}
+                                        />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="form-group">
+                                        <button type="submit" className="btn btn-primary">
+                                            Add!
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
                 </form>
-            </div>
+            </div >
         )
     }
 }
