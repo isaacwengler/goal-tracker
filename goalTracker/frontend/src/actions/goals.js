@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_GOALS, DELETE_GOAL, ADD_GOAL, COMPLETE_GOAL } from './types';
+import { GET_GOALS, DELETE_GOAL, ADD_GOAL, COMPLETE_GOAL, GET_ERRORS } from './types';
 
 // GET GOALS 
 export const getGoals = () => dispatch => {
@@ -34,7 +34,16 @@ export const addGoal = (goal) => dispatch => {
                 type: ADD_GOAL,
                 payload: res.data
             });
-        }).catch(err => console.log(err));
+        }).catch(err => {
+            const errors = {
+                msg: err.response.data,
+                status: err.response.status,
+            }
+            dispatch({
+                type: GET_ERRORS,
+                payload: errors
+            })
+        });
 }
 
 // COMPLETE GOAL

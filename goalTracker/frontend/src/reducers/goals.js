@@ -22,7 +22,6 @@ export default function (state = initialState, action) {
                 goals: [...state.goals, action.payload]
             }
         case COMPLETE_GOAL:
-            console.log(action.payload)
             return {
                 ...state,
                 goals: state.goals.map(goal => (goal.id === action.payload.id) ? action.payload : goal),

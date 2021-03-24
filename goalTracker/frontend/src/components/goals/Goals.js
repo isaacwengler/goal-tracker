@@ -19,7 +19,7 @@ export class Goals extends Component {
         return (
             <Fragment>
                 <h2>Goals</h2>
-                <table className='table table-striped'>
+                <table className='table table-primary'>
                     <thead>
                         <tr>
                         </tr>
