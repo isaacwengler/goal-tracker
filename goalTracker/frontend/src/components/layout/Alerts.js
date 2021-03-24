@@ -11,7 +11,7 @@ export class Alerts extends Component {
     componentDidUpdate(prevProps) {
         const { error, alert } = this.props;
         if (error != prevProps.error) {
-            alert.error('Goal is required')
+            alert.error(error.msg)
         }
     }
 

@@ -10,8 +10,18 @@ export const getGoals = () => dispatch => {
                 type: GET_GOALS,
                 payload: res.data
             });
-        }).catch(err => console.log(err));
+        }).catch(err => {
+            const errors = {
+                msg: "Log in to view goals",
+                status: err.response.status,
+            }
+            dispatch({
+                type: GET_ERRORS,
+                payload: errors
+            })
+        });
 }
+
 
 // DELETE GOAL
 
@@ -36,7 +46,7 @@ export const addGoal = (goal) => dispatch => {
             });
         }).catch(err => {
             const errors = {
-                msg: err.response.data,
+                msg: "Goal is required",
                 status: err.response.status,
             }
             dispatch({
@@ -61,4 +71,12 @@ export const completeGoal = (id, goal, status) => dispatch => {
                 payload: modify
             });
         }).catch(err => console.log(err));
+}
+
+// RETURN ERRORS
+const returnErrors = (msg, status) => {
+    return {
+        type: GET_ERRORS,
+        payload: { msg, status }
+    }
 }

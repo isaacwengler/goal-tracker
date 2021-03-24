@@ -26,7 +26,7 @@ export class Form extends Component {
         const { name } = this.state;
         return (
             <div className="card card-body mt-4 mb-4">
-                <h2>Make New Goal</h2>
+                <h2>Set a New Goal</h2>
                 <form onSubmit={this.onSubmit}>
                     <table className="table">
                         <thead>
