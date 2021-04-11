@@ -8,8 +8,8 @@ export class Header extends Component {
                 <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
                     <div className="container-fluid">
                         <span className="navbar-brand mb-0 h1">Goal Tracker</span>
-                        <div class="" id="navbarNavAltMarkup">
-                            <div class="navbar-nav">
+                        <div id="navbarNavAltMarkup">
+                            <div className="navbar-nav">
                                 <li className="nav-item">
                                     <Link to="/register" className="nav-link">Register</Link>
                                 </li>
