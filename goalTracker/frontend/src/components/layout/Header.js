@@ -21,12 +21,12 @@ export class Header extends Component {
         const authLinks = (
             <div id="navbarNavAltMarkup">
                 <div className="navbar-nav">
-                    <span className="navbar-brand mb-0">
-                        {user ? `Hi, ${user.username}!` : ""}
-                    </span>
-                    <li className="nav-item">
-                        <a onClick={this.props.logout} className="nav-link">Logout</a>
-                    </li>
+                    <form className="form-inline">
+                        <span className="navbar-brand mb-0">
+                            {user ? `Hi, ${user.username}!` : ""}
+                        </span>
+                        <button className="btn btn-sm btn-outline-secondary" type="button" onClick={this.props.logout}>Logout</button>
+                    </form>
                 </div>
             </div>
         );
@@ -34,12 +34,14 @@ export class Header extends Component {
         const guestLinks = (
             <div id="navbarNavAltMarkup">
                 <div className="navbar-nav">
-                    <li className="nav-item">
-                        <Link to="/register" className="nav-link">Register</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="/login" className="nav-link">Login</Link>
-                    </li>
+                    <form className="form-inline">
+                        <li className="nav-item">
+                            <Link to="/register" className="nav-link">Register</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/login" className="nav-link">Login</Link>
+                        </li>
+                    </form>
                 </div>
             </div>
         );

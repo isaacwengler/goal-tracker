@@ -43,8 +43,8 @@ export class Register extends Component {
         }
         const { username, email, password, password2 } = this.state;
         return (
-            <div>
-                <div className="card card-body mt-4 mb-4">
+            <div className="col-md-6 m-auto">
+                <div className="card card-body mt-5 ">
                     <h2 className="text-center">Register</h2>
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group">
