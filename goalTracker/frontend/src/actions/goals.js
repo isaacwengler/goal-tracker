@@ -1,10 +1,11 @@
 import axios from 'axios';
+import { tokenConfig } from './auth';
 
 import { GET_GOALS, DELETE_GOAL, ADD_GOAL, COMPLETE_GOAL, GET_ERRORS } from './types';
 
 // GET GOALS 
-export const getGoals = () => dispatch => {
-    axios.get('/api/goals/')
+export const getGoals = () => (dispatch, getState) => {
+    axios.get('/api/goals/', tokenConfig(getState))
         .then(res => {
             dispatch({
                 type: GET_GOALS,
@@ -25,8 +26,8 @@ export const getGoals = () => dispatch => {
 
 // DELETE GOAL
 
-export const deleteGoal = (id) => dispatch => {
-    axios.delete(`/api/goals/${id}`)
+export const deleteGoal = (id) => (dispatch, getState) => {
+    axios.delete(`/api/goals/${id}`, tokenConfig(getState))
         .then(res => {
             dispatch({
                 type: DELETE_GOAL,
@@ -37,8 +38,8 @@ export const deleteGoal = (id) => dispatch => {
 
 // ADD GOAL
 
-export const addGoal = (goal) => dispatch => {
-    axios.post("/api/goals/", goal)
+export const addGoal = (goal) => (dispatch, getState) => {
+    axios.post("/api/goals/", goal, tokenConfig(getState))
         .then(res => {
             dispatch({
                 type: ADD_GOAL,
@@ -58,13 +59,13 @@ export const addGoal = (goal) => dispatch => {
 
 // COMPLETE GOAL
 
-export const completeGoal = (id, goal, status) => dispatch => {
+export const completeGoal = (id, goal, status) => (dispatch, getState) => {
     const modify = {
         id: id,
         name: goal,
         complete: status
     }
-    axios.put(`/api/goals/${id}/`, modify)
+    axios.put(`/api/goals/${id}/`, modify, tokenConfig(getState))
         .then(res => {
             dispatch({
                 type: COMPLETE_GOAL,

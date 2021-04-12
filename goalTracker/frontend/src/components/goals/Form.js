@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addGoal } from '../../actions/goals'
 
+
+
 export class Form extends Component {
     state = {
         name: '',
@@ -23,6 +25,7 @@ export class Form extends Component {
     };
 
     render() {
+
         const { name } = this.state;
         return (
             <div className="card card-body mt-4 mb-4">

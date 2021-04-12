@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-//import { register } from '../../actions/auth';
-//import { createMessage } from '../../actions/messages';
+import { register, failRegister } from '../../actions/auth';
+
+
+
 
 export class Register extends Component {
     state = {
@@ -22,12 +24,12 @@ export class Register extends Component {
         e.preventDefault();
         const { username, email, password, password2 } = this.state;
         if (password !== password2) {
-            this.props.createMessage({ passwordNotMatch: 'Passwords do not match' });
+            this.props.failRegister();
         } else {
             const newUser = {
                 username,
                 password,
-                email,
+                email
             };
             this.props.register(newUser);
         }
@@ -104,4 +106,4 @@ const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default Register; //connect(mapStateToProps, { register, createMessage })(Register);
+export default connect(mapStateToProps, { register, failRegister })(Register);
