@@ -15,12 +15,13 @@ export class Header extends Component {
         logout: PropTypes.func.isRequired
     }
 
+
     render() {
         const { isAuthenticated, user } = this.props.auth;
         const authLinks = (
             <div id="navbarNavAltMarkup">
                 <div className="navbar-nav">
-                    <span className="navbar-brand mb-0 ">
+                    <span className="navbar-brand mb-0">
                         {user ? `Hi, ${user.username}!` : ""}
                     </span>
                     <li className="nav-item">
