@@ -1,4 +1,4 @@
-#Goal-Tracker
+# Goal Tracker
 
 This project is a full stack todo web application made with Django and React to track goals, with user authentication.
 
